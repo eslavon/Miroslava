@@ -1,0 +1,5 @@
+{
+    "require": {
+        "iboldurev/dialogflow": "^0.3.0"
+    }
+}
