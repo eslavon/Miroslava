@@ -1,5 +1,16 @@
 {
+    "name": "eslavon/miroslava",
+    "authors": [
+        {
+            "name": "Victor Vinogradov",
+            "email": "victor@eslavon.ru"
+        }
+    ],
+    "autoload": {
+        "psr-4": {"Eslavon\\Miroslava\\": "src/"}
+    },
     "require": {
+        "php": ">=7.3",
         "iboldurev/dialogflow": "^0.3.0",
         "vlucas/phpdotenv": "^4.1",
         "ext-json": "*",
