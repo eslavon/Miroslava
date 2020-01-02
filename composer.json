@@ -1,5 +1,8 @@
 {
     "require": {
-        "iboldurev/dialogflow": "^0.3.0"
+        "iboldurev/dialogflow": "^0.3.0",
+        "vlucas/phpdotenv": "^4.1",
+        "ext-json": "*",
+        "ext-curl": "*"
     }
 }
