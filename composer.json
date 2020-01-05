@@ -7,7 +7,9 @@
         }
     ],
     "autoload": {
-        "psr-4": {"Eslavon\\Miroslava\\": "src/"}
+        "psr-4": {
+            "Eslavon\\Miroslava\\": "src/"
+        }
     },
     "require": {
         "php": ">=7.3",
