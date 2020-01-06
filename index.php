@@ -29,7 +29,9 @@ switch ($vk_response->type) {
         echo "ok";
         $client = new Client($_ENV["DIALOG_FLOW_API_KEY"]);
         $queryApi = new QueryApi($client);
-        $chatbase->userMessage($vk_response->user_id,"vk",$vk_response->message,"Location_chat",false,false);
+        $user_chatbase_id = "user-".(string)$vk_response->user_id;
+        $chatbase_request_data = $chatbase->userMessage($user_chatbase_id,"OurPlatform",$vk_response->message,"Miroslava",false,false);
+        $chatbase->send($chatbase_request_data);
         $meaning = $queryApi->extractMeaning($vk_response->message, [
             'sessionId' =>  '251510315',
             'lang' => 'ru',
@@ -40,9 +42,11 @@ switch ($vk_response->type) {
         $dialogflow_answer =  $dialogflow_data->getSpeech();
         if ($dialogflow_answer !== "не распознано") {
             $vk_request->sendMessage($vk_response->peer_id,$dialogflow_answer);
-            $chatbase->agentMessage($vk_response->user_id,"vk",$dialogflow_answer,"Location_chat");
+            $chatbase_request_data = $chatbase->agentMessage($user_chatbase_id,"OurPlatform",$dialogflow_answer,"Miroslava");
+            $chatbase->send($chatbase_request_data);
         } else {
-            $chatbase->agentMessage($vk_response->user_id,"vk",$dialogflow_answer,"Location_chat",true);
+            $chatbase_request_data = $chatbase->agentMessage($user_chatbase_id,"OurPlatform",$dialogflow_answer,"Miroslava",true);
+            $chatbase->send($chatbase_request_data);
         }
-    break;
+        break;
 }
